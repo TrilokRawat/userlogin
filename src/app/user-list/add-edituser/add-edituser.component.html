@@ -1,0 +1,98 @@
+<!-- <p>add-edituser works!</p> -->
+<button type="button" class="btn btn-primary d-none" id="add-edit-model-open" data-toggle="modal"
+    data-target=".bd-add-edit-modal-lg">Large modal</button>
+
+<div class="modal fade bd-add-edit-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    data-backdrop="static" data-keyboard="false" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form [formGroup]="userForm" (ngSubmit)="addUser(userForm.value)" autocomplete="off"
+            ngNativeValidate>
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"> {{key}} User</h5>
+                    <button type="button" class="close" id="close-model" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputname">Name</label>
+                            <input type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }"
+                               formControlName="name" id="inputname" placeholder="Name">
+                               <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                                <div *ngIf="f.name.errors.required">Name is required</div>
+                                </div>
+                            </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputusername4">Username</label>
+                            <input type="text" class="form-control"  [ngClass]="{ 'is-invalid': submitted && f.username.errors }"
+                            formControlName="username"  id="inputusername4" placeholder="Username" minlength="3"
+                            [readonly]="key == 'Edit' ? true: false">
+                            <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                                <div *ngIf="f.username.errors.required">Username is required</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">Email</label>
+                            <input type="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+                            formControlName="email"  id="inputEmail4" placeholder="Email"
+                            [readonly]="key == 'Edit' ? true: false">
+                            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                <div *ngIf="f.email.errors.required">Email is required</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputPassword4">Password</label>
+                            <input type="password" class="form-control"  [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+                            formControlName="password"  id="inputPassword4" placeholder="Password" minlength="6"
+                            [readonly]="key == 'Edit' ? true: false">
+                            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                <div *ngIf="f.password.errors.required">Password is required</div>
+                            </div>  
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputrole">Role</label>
+                            <select id="inputrole" class="form-control"
+                            formControlName="role" [ngClass]="{ 'is-invalid': submitted && f.role.errors }">
+                                <option value="admin">Admin</option>
+                                <option value="super_admin">Super Admin</option>
+                                <option value="user">User</option>
+                            </select>
+                             <div *ngIf="submitted && f.role.errors" class="invalid-feedback">
+                                <div *ngIf="f.role.errors.required">Role is required</div>
+                             </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputaddress">Address</label>
+                            <input type="text" class="form-control" 
+                            formControlName="address" id="inputaddress" placeholder="Address">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputcity">City</label>
+                            <input type="text" class="form-control" 
+                            formControlName="city" id="inputcity" placeholder="City">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputustate">State</label>
+                            <input type="text" class="form-control" 
+                            formControlName="state" id="inputustate" placeholder="State">
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

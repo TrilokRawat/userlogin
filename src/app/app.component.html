@@ -1,0 +1,24 @@
+<!-- <div class="custom-file">
+  <input type="file" class="custom-file-input"
+  (change)="onuplaodFile($event)"
+  id="customFile">
+  <label class="custom-file-label" for="customFile">Choose file</label>
+</div> -->
+
+<router-outlet></router-outlet>
+
+<div class="main-app-div">
+
+  <app-header [hidden]="currentPage == 'login'" ></app-header>
+  <div class="container-fluid">
+  
+    <div class="row main-app-container-box" >
+      <div class="col-2 " [ngClass]="{'sidebar-component-bg': currentPage != 'login'}">
+        <app-sidebar *ngIf="currentPage != 'login'"></app-sidebar>
+      </div>
+      <div class="col-10 router-component-box">
+          <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>
