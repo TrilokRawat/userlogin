@@ -23,7 +23,7 @@
                 <th scope="col">Username</th>
                 <th scope="col">Email</th>
                 <th scope="col">Role</th>
-                <th scope="col" >Action</th>
+                <th scope="col" *ngIf="shared.checkUserRole()">Action</th>
             </tr>
         </thead>
         <tbody *ngIf="userList">
@@ -32,7 +32,7 @@
                 <td>{{item.name}}</td>
                 <td>{{item.username}}</td>
                 <td>{{item.email}}</td>
-                <td>
+                <td >
                     <span *ngIf="item.role == 'admin'">
                         Admin
                     </span>
@@ -43,9 +43,9 @@
                         User
                     </span>
                 </td>
-                <td>
+                <td *ngIf="shared.checkUserRole()">
                     <a href="javascript:void(0)" title="Edit" 
-                    *ngIf="shared.checkUserRole()" (click)="onAddEditUser('Edit', item)">
+                     (click)="onAddEditUser('Edit', item)">
                         <i class="fas fa-edit"></i>
                     </a>
                     <a href="javascript:void(0)" class="ml-2 " (click)="viewUser(item._id)" data-toggle="modal"
@@ -53,7 +53,7 @@
                         <i class="fas fa-eye"></i>
                     </a>
                     <a href="javascript:void(0)" class="ml-2 text-danger" 
-                    *ngIf="shared.checkUserRole()" [hidden]="shared.getCurrentUser(item._id)" (click)="deleteUser(item._id)" title="Delete">
+                     [hidden]="shared.getCurrentUser(item._id)" (click)="deleteUser(item._id)" title="Delete">
                         <i class="fas fa-trash-alt"></i>
                     </a>
                 </td>
