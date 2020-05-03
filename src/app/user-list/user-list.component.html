@@ -53,7 +53,7 @@
                         <i class="fas fa-eye"></i>
                     </a>
                     <a href="javascript:void(0)" class="ml-2 text-danger" 
-                    *ngIf="shared.checkUserRole()" (click)="deleteUser(item._id)" title="Delete">
+                    *ngIf="shared.checkUserRole()" [hidden]="shared.getCurrentUser(item._id)" (click)="deleteUser(item._id)" title="Delete">
                         <i class="fas fa-trash-alt"></i>
                     </a>
                 </td>

@@ -16,4 +16,13 @@ export class SharedService {
       return false;
     }
   }
+  getCurrentUser(id) {
+    let user = localStorage.getItem('loginUser');
+    user = user ? JSON.parse(user) : '';
+    if (Array.isArray((user)) && user[0]._id == id) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
